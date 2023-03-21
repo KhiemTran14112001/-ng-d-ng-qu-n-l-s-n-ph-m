@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm</title>
+</head>
+<body>
+<h2>Add New product</h2>
+<input type="text" placeholder="New product" id="prd"> <input type="button" value="Add" onclick="addProduct()">
+<h2>Display all product</h2>
+<h3>Product name</h3>
+<p id="result"></p>
+<script>
+    let x = 0;
+    let arr = [];
+
+    function addProduct() {
+        arr[x] = document.getElementById('prd').value;
+        x++;
+        document.getElementById('prd').value = '';
+        let e = '';
+        for (let i = 0; i < arr.length; i++) {
+            e = arr[i] + ` <button onclick="edit(${i})">Edit</button> <button onclick="deleteprd(${i})">Delete</button> <br> <br>`;
+        }
+        document.getElementById('result').innerHTML = e;
+        console.log(arr)
+    }
+
+    function edit(index) {
+        arr[index] = prompt('');
+        let e = '';
+        for (let i = 0; i < arr.length; i++) {
+            e = arr[i] + ` <button onclick="edit(${i})">Edit</button> <button onclick="deleteprd(${i})">Delete</button> <br> <br>`;
+        }
+        document.getElementById('result').innerHTML = e;
+    }
+
+    function deleteprd(index) {
+        arr.splice(index, 1);
+        let e = '';
+        for (let i = 0; i < arr.length; i++) {
+            e = arr[i] + ` <button onclick="edit(${i})">Edit</button> <button onclick="deleteprd(${i})">Delete</button> <br> <br>`;
+        }
+        document.getElementById('result').innerHTML = e;
+    }
+</script>
+</body>
+</html>
