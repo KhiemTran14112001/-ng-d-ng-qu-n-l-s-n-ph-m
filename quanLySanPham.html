@@ -17,6 +17,10 @@
         arr.push(document.getElementById('prd').value);
         document.getElementById('prd').value = '';
         displayProduct();
+        getCountProduct();
+    }
+
+    function getCountProduct() {
         document.getElementById('count').innerHTML = arr.length + ' products';
     }
 
@@ -38,8 +42,11 @@
     }
 
     function deleteprd(index) {
-        arr.splice(index, 1);
-        displayProduct();
+        if (confirm('Do you want delete this product?')) {
+            arr.splice(index, 1);
+            displayProduct();
+        }
+        getCountProduct();
     }
 </script>
 </body>
